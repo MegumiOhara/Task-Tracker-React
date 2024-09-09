@@ -5,7 +5,7 @@ function ToDoList(){
 
 //2 state variables. tasks in array of string.
 //initial state of tasks is going to be an empty array
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(["sleep", "eat", "wake"])
 //state variable for a new task. Initial state is empty string
     const [newTask, setNewTask] = useState("")
 
@@ -31,6 +31,7 @@ function doneTask(index){
 
 }
     return (
+    <div>
     <div className="track-list">
         <h1>Task Tracker</h1> 
         <div>
@@ -46,17 +47,28 @@ function doneTask(index){
             </button>
         </div>
         <ol>
-            {tasks.map((tasks, index) => 
+            {tasks.map((task, index) => 
                 <li key={index}>
                     <span className="text">{task}</span>
+                    <button
+                        className="edit-button"
+                        onClick={() => editTask(index)}>
+                        Edit
+                    </button>
                     <button
                         className="delete-button"
                         onClick={() => deleteTask(index)}>
                         Delete
                     </button>
+                    <button
+                        className="complete-button"
+                        onClick={() => doneTask(index)}>
+                        Complete
+                    </button>
                 </li>
             )}
         </ol>
+    </div>
     </div>
     );
 }
