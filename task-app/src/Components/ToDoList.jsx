@@ -28,9 +28,14 @@ function addTask(){
     }
 }
 //function to delete task. One parameter of index.
-//an index of the list item for deleting
+//an index of the list item for deleting. Index of an element to be deleted
+//if the current index of i is not strictly not equal to index you want to delete, update to new array
+//of updated Tasks. If the i adn index match, filter it out 
+//new array of Updated Tasks should not have the taken element.
 function deleteTask(index){
 
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
 }
 
 function editTask(index){
