@@ -5,7 +5,7 @@ function ToDoList(){
 
 //2 state variables. tasks in array of string.
 //initial state of tasks is going to be an empty array
-    const [tasks, setTasks] = useState(["sleep", "eat", "wake"])
+    const [tasks, setTasks] = useState([])
 //state variable for a new task. Initial state is empty string
     const [newTask, setNewTask] = useState("")
 
@@ -15,8 +15,17 @@ function handleInputChange(event){
     setNewTask(event.target.value)
 }
 //function to add task. No parameters
+//after hitting the add button, call function to add new task
+//get the text in the to the element of newTask
+//updator function using previous state of tasks (t)
+//need to prevent adding blank task
 function addTask(){
 
+    if(newTask.trim() !==""){
+    
+    setTasks( t =>[...t, newTask]);
+    setNewTask("");
+    }
 }
 //function to delete task. One parameter of index.
 //an index of the list item for deleting
@@ -31,7 +40,7 @@ function doneTask(index){
 
 }
     return (
-    <div>
+    <div className="main">
     <div className="track-list">
         <h1>Task Tracker</h1> 
         <div>
