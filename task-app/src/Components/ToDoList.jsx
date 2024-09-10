@@ -53,8 +53,9 @@ function doneTask(index){
     <div className="main">
     <div className="track-list">
         <h1>Task Tracker</h1> 
-        <div>
+        <div className="track-box">
             <input
+                className="track-input"
                 type="text"
                 placeholder="Enter a task"
                 value={newTask}
@@ -77,7 +78,7 @@ function doneTask(index){
                     <button
                         className="delete-button"
                         onClick={() => deleteTask(index)}>
-                        Delete
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                     <input
                         className="complete"
