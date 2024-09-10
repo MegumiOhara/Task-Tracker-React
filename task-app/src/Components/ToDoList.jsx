@@ -3,7 +3,7 @@ import React, { useState} from "react";
 
 function ToDoList(){
 
-//2 state variables. tasks in array of string.
+//2 state variables.
 //initial state of tasks is going to be an empty array
     const [tasks, setTasks] = useState([])
 //state variable for a new task. Initial state is empty string
@@ -42,7 +42,12 @@ function editTask(index){
 
 }
 function doneTask(index){
-
+    const updateTasks = tasks.map((_, i) =>{
+        if(i === index){
+            return {_, isComplete: !tasks.isComplete}
+        }
+        return tasks
+    } )
 }
     return (
     <div className="main">
@@ -74,11 +79,12 @@ function doneTask(index){
                         onClick={() => deleteTask(index)}>
                         Delete
                     </button>
-                    <button
-                        className="complete-button"
-                        onClick={() => doneTask(index)}>
-                        Complete
-                    </button>
+                    <input
+                        className="complete"
+                        type="checkbox"
+                        onChange={() => doneTask(index)}
+                        checked={task.completed}>
+                    </input>
                 </li>
             )}
         </ol>
