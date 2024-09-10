@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 
 function ToDoList(){
@@ -23,7 +23,7 @@ function addTask(){
 
     if(newTask.trim() !==""){
     
-    setTasks( t =>[...t, newTask]);
+    setTasks((t) =>[...t, { text: newTask, completed: false}]);
     setNewTask("");
     }
 }
@@ -38,16 +38,17 @@ function deleteTask(index){
     setTasks(updatedTasks);
 }
 
-function editTask(index){
-
-}
 function doneTask(index){
-    const updateTasks = tasks.map((_, i) =>{
-        if(i === index){
-            return {_, isComplete: !tasks.isComplete}
+
+    const updatedTasks = tasks.map((task, i) =>{
+        if (i === index){
+            return {...task, completed: !task.completed};
         }
-        return tasks
-    } )
+
+        return task;
+    })
+
+    setTasks(updatedTasks);
 }
     return (
     <div className="main">
@@ -66,18 +67,16 @@ function doneTask(index){
                 Add
             </button>
         </div>
-        <ol>
+        <ul>
             {tasks.map((task, index) => 
                 <li key={index}>
-                    <span className="text">{task}</span>
-                    <button
-                        className="edit-button"
-                        onClick={() => editTask(index)}>
-                        Edit
-                    </button>
+                    <span className={`text ${task.completed ? "completed" : ""}`}>
+                        {task.text}
+                    </span>
                     <button
                         className="delete-button"
-                        onClick={() => deleteTask(index)}>
+                        onClick={() => deleteTask(index)}
+                        title="Delete task">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                     <input
@@ -88,7 +87,7 @@ function doneTask(index){
                     </input>
                 </li>
             )}
-        </ol>
+        </ul>
     </div>
     </div>
     );
