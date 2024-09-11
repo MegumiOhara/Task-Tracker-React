@@ -5,14 +5,20 @@ function ToDoList(){
 
 //2 state variables.
 //initial state of tasks is going to be an empty array
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState([]);
 //state variable for a new task. Initial state is empty string
-    const [newTask, setNewTask] = useState("")
-
+    const [newTask, setNewTask] = useState("");
+//initial stae for editing text and its index
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editText, setEditText] = useState("");
 //Declare the function for the textbox for typing in
 function handleInputChange(event){
     // setNewTask to access event parameter, access target and value
-    setNewTask(event.target.value)
+    setNewTask(event.target.value);
+}
+//Function to handle edit inpute
+function handleEditChange(event){
+    setEditText(event.target.value);
 }
 //function to add task. No parameters
 //after hitting the add button, call function to add new task
@@ -21,8 +27,7 @@ function handleInputChange(event){
 //need to prevent adding blank task
 function addTask(){
 
-    if(newTask.trim() !==""){
-    
+    if(newTask.trim() !==""){ 
     setTasks((t) =>[...t, { text: newTask, completed: false}]);
     setNewTask("");
     }
@@ -44,10 +49,8 @@ function doneTask(index){
         if (i === index){
             return {...task, completed: !task.completed};
         }
-
         return task;
     })
-
     setTasks(updatedTasks);
 }
     return (
