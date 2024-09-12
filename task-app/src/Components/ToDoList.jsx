@@ -9,16 +9,15 @@ function ToDoList(){
 //state variable for a new task. Initial state is empty string
     const [newTask, setNewTask] = useState("");
 //index of task being edited
-const [editingIndex, setEditingIndex] = useState(null);
+    const [editingIndex, setEditingIndex] = useState(null);
 //text of the task being edited
-const [editingText, setEditingText] = useState("");
+    const [editingText, setEditingText] = useState("");
 
 //Declare the function for the textbox for typing in
 function handleInputChange(event){
     // setNewTask to access event parameter, access target and value
     setNewTask(event.target.value);
 }
-
 //function to add task. No parameters
 //after hitting the add button, call function to add new task
 //get the text in the to the element of newTask
@@ -47,13 +46,13 @@ function editTask(index){
     //prefill the input with the current task 
     setEditingText(tasks[index].text);
     }
-    //Handle input change for editing task
-    function handleEditInputChange(event){
-        setEditingText(event.target.value);
+//Handle input change for editing task
+function handleEditInputChange(event){
+    setEditingText(event.target.value);
     }
-    //save the edited Task
-    function saveTask(){
-        const updatedTasks= tasks.map((task, i) =>
+//save the edited Task
+function saveTask(){
+    const updatedTasks= tasks.map((task, i) =>
         i === editingIndex ? {...task, text:editingText } : task
         );
     
@@ -61,10 +60,10 @@ function editTask(index){
         setEditingIndex(null); //clear editing state
         setEditingText(""); //clear editing input
     }
-    //cancel editing
-    function cancelEdit(){
-        setEditingIndex(null);
-        setEditingText("");
+//cancel editing
+function cancelEdit(){
+    setEditingIndex(null);
+    setEditingText("");
     }
 function doneTask(index){
     const updatedTasks = tasks.map((task, i) =>{
@@ -124,13 +123,13 @@ function doneTask(index){
                         </>
                     )}
                         <button
-                            className="delete-button"
+                            className={`delete-button ${editingIndex === index ? "hidden" : ""}`}
                             onClick={() => deleteTask(index)}
                             title="Delete task">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                         <input
-                            className="complete"
+                            className={`complete ${editingIndex === index ? "hidden" : ""}`}
                             type="checkbox"
                             onChange={() => doneTask(index)}
                             checked={task.completed}>

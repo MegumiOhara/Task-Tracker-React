@@ -117,4 +117,7 @@ color: black;
 .complete{
   width: 20px;
 }
+.hidden{
+  display: none;
+}
 
