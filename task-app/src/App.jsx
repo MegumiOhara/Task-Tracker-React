@@ -1,13 +1,9 @@
-import ToDoList from "./Components/ToDoList";
-import EditTodo from "./Components/EditToDo";
-
-
+import ToDoList from "./Components/ToDoList"
 
 function App() {
  
   return (
     <ToDoList/>
-    <EditTodo/>
   )
 }
 
