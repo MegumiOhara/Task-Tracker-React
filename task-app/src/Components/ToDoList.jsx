@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 
 function ToDoList(){
-
-//2 state variables.
 //initial state of tasks is going to be an empty array
     const [tasks, setTasks] = useState([]);
 //state variable for a new task. Initial state is empty string
@@ -20,8 +18,8 @@ function handleInputChange(event){
 }
 //function to add task. No parameters
 //after hitting the add button, call function to add new task
-//get the text in the to the element of newTask
-//updator function using previous state of tasks (t)
+//get the text into the element of newTask
+//update function using previous state of tasks (t)
 //need to prevent adding blank task
 function addTask(){
 
@@ -30,27 +28,30 @@ function addTask(){
     setNewTask("");
     }
 }
+
 //function to delete task. One parameter of index.
-//an index of the list item for deleting. Index of an element to be deleted
+//Index of an element to be deleted
 //if the current index of i is not strictly not equal to index you want to delete, update to new array
-//of updated Tasks. If the i adn index match, filter it out 
+//of updated Tasks. If the i and index match, filter it out 
 //new array of Updated Tasks should not have the taken element.
 function deleteTask(index){
 
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
 }
+
 function editTask(index){
-    //set the editing index to the clicked tasks index
-        setEditingIndex(index);
-    //prefill the input with the current task 
+//set the editing index to the clicked tasks index
+    setEditingIndex(index);
+//prefill the input with the current task 
     setEditingText(tasks[index].text);
     }
+
 //Handle input change for editing task
 function handleEditInputChange(event){
     setEditingText(event.target.value);
     }
-//save the edited Task
+
 function saveTask(){
     const updatedTasks= tasks.map((task, i) =>
         i === editingIndex ? {...task, text:editingText } : task
@@ -60,11 +61,12 @@ function saveTask(){
         setEditingIndex(null); //clear editing state
         setEditingText(""); //clear editing input
     }
-//cancel editing
+
 function cancelEdit(){
     setEditingIndex(null);
     setEditingText("");
     }
+
 function doneTask(index){
     const updatedTasks = tasks.map((task, i) =>{
         if (i === index){

@@ -22,6 +22,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .track-list{
   display: flex;
   flex-direction: column;
@@ -34,9 +35,11 @@ body {
   border-radius: 5%;
   padding: 10px;
 }
+
 h1{
   text-align: center;
 }
+
 .track-box{
   max-width: 600px;
   width: 400px;
@@ -45,6 +48,7 @@ h1{
   display: flex;
   justify-content: center;
 }
+
 ul{
   padding: 0;
   font-size: 20px;
@@ -56,8 +60,8 @@ ul{
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-
 }
+
 li{
   border: pink solid;
   padding: 3px;
@@ -66,10 +70,12 @@ li{
   margin-bottom: 10px;
   background: white;
 }
+
 .text{
   flex: 1; 
   padding: 2px;
 }
+
 button{
   border-radius: 2px;
   border-width: 1px;
@@ -79,17 +85,19 @@ button{
   transition: background-color 0.5 ease;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+
 .add-button{
   background-color: pink;
   font-size: 20px;
   align-self: center;
   padding: 3px 10px;
-
 }
+
 .add-button:hover{
   background-color: rgba(255, 60, 89, 0.957);
   color: white;
 }
+
 .delete-button{
   background-color: rgb(234, 147, 161);
   color: white;
@@ -97,17 +105,21 @@ button{
   font-size: 16px;
   margin-left: 10px;
 }
+
 .delete-button:hover{
   background-color: rgb(240, 116, 136);
 }
+
 .edit-button, .save-button, .cancel-button{
   background-color: rgb(244, 178, 184);
   border: none; 
 }
+
 .edit-button:hover, .save-button:hover, .cancel-button:hover{
   background-color: rgb(234, 147, 161);;
   color: white;
 }
+
 input[type="text"]{
 font-size: 20px;
 padding: 5px;
@@ -115,9 +127,11 @@ border: 2px solid pink;
 border-radius: 5px;
 color: black;
 }
+
 .complete{
   width: 20px;
 }
+
 .hidden{
   display: none;
 }
